@@ -16,8 +16,8 @@ repository: https://github.com/earth-hanuman/orange
 #   zsp publish -s app/build/outputs/apk/release/app-release.apk
 
 # Publisher key for repo-based whitelisting. Must match the key you sign with
-# (SIGN_WITH). Hex form (npub1uuf64hh…umh6s).
-pubkey: e713aadeec0707080f1f02466afdc8c86fe73dd655a63b2575ec62ede5f6ddd5
+# (SIGN_WITH).
+pubkey: npub1uuf64hhvqurssrclqfrx4lwgeph7w0wk2knrkft4a33wme0kmh2s3umh6s
 
 name: Orange
 summary: System-level warm color filter and grayscale, no root
