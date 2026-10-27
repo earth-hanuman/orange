@@ -1,0 +1,40 @@
+# Zapstore publishing manifest for Orange.
+# Format reference: run `zsp skill`. Verify with `zsp check` before publishing.
+#
+# Publishing (you run these — secrets stay with you):
+#   export SIGN_WITH=nsec1...        # or a bunker:// remote signer
+#   zsp check                         # validates listing + APK, shows next_step
+#   zsp publish -q
+#
+# `repository` OR `release_source` is required. Until the source is published
+# to Nostr git (ngit) or a forge, we publish from the local signed APK below.
+# After `ngit init`, add your NIP-34 naddr here and attach the APK to the
+# release so it can publish from the repository instead:
+# repository: naddr1...
+
+release_source: ./app/build/outputs/apk/release/app-release.apk
+
+name: Orange
+summary: System-level warm color filter and grayscale, no root
+description: |
+  Orange is a privacy-first blue-light / color filter that drives the display
+  directly on GrapheneOS — no root required.
+
+  - Warmth: a deep amber/red tint with adjustable hue and intensity, able to go
+    warmer and more saturated than the stock Night Light.
+  - Grayscale: true desaturation via the system daltonizer.
+  - Extra Dim: the real reduce-bright-colors transform.
+  - Time schedule (re-armed after reboot) and a Quick Settings tile.
+
+  No network access: Orange has no INTERNET permission, no analytics, and no
+  third-party SDKs. Grayscale and dim are granted once via WRITE_SECURE_SETTINGS
+  (adb); warmth uses a screen overlay.
+
+license: GPL-3.0
+tags: [utilities, accessibility, privacy]
+
+# icon/images are derived from the APK and repository metadata. Add explicit
+# paths here (PNG) if you want to override them:
+# icon: ./assets/icon.png
+# images:
+#   - ./screenshots/1.png

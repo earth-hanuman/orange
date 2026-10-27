@@ -130,5 +130,24 @@ grant must be repeated there, and its on/off state is independent.
 ## Hosting & distribution
 
 Source is hosted on Nostr git ([NIP-34](https://github.com/nostr-protocol/nips/blob/master/34.md))
-via [ngit](https://gitworkshop.dev/). Releases are intended for
-[Zapstore](https://zapstore.dev/).
+via [ngit](https://gitworkshop.dev/). Releases go to
+[Zapstore](https://zapstore.dev/) via the `zsp` CLI, configured by
+`zapstore.yaml`.
+
+Publishing a release (requires a signed APK + your Nostr key — see
+`keystore.properties.template`):
+
+```bash
+# 1. build a signed release (after creating keystore.properties)
+./gradlew :app:assembleRelease
+
+# 2. check + publish (secrets stay with you)
+export SIGN_WITH=nsec1...        # or a bunker:// remote signer
+zsp check
+zsp publish -q
+```
+
+## License
+
+[GPL-3.0](LICENSE). Orange is free software; see the `LICENSE` file for the
+full text.
