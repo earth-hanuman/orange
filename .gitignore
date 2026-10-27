@@ -13,5 +13,7 @@
 # Signing material — never commit these
 *.keystore
 *.jks
+*.p12
+*.pfx
 keystore.properties
 *.nsec
