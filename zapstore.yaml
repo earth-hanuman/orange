@@ -6,13 +6,14 @@
 #   zsp check                         # validates listing + APK, shows next_step
 #   zsp publish -q
 #
-# `repository` OR `release_source` is required. Until the source is published
-# to Nostr git (ngit) or a forge, we publish from the local signed APK below.
-# After `ngit init`, add your NIP-34 naddr here and attach the APK to the
-# release so it can publish from the repository instead:
-# repository: naddr1...
+# Published from the GitHub repo: attach the SIGNED app-release.apk to a GitHub
+# Release (see README), then `zsp` pulls that asset — no local path committed.
+repository: https://github.com/earth-hanuman/orange
 
-release_source: ./app/build/outputs/apk/release/app-release.apk
+# For a LOCAL test run before a release asset exists, pass the APK on the CLI
+# instead of committing a path here:
+#   zsp check  app/build/outputs/apk/release/app-release.apk
+#   zsp publish -s app/build/outputs/apk/release/app-release.apk
 
 name: Orange
 summary: System-level warm color filter and grayscale, no root
