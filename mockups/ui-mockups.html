@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orange — UI/UX concepts</title>
+<style>
+  :root{
+    --accent:#FF7A1A;
+    --red:#E23A2E;
+    --bg:#0E0E10;
+    --card:#1A1A1D;
+    --card2:#232327;
+    --text:#F5F5F7;
+    --muted:#8A8A8E;
+    --line:#2C2C31;
+    --ok:#30D158;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#070708;color:var(--text);padding:40px 24px 80px;}
+  h1.page{font-size:26px;font-weight:700;margin:0 0 4px;}
+  p.lead{color:var(--muted);margin:0 0 36px;max-width:760px;line-height:1.5;}
+  .gallery{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;}
+  .concept{width:340px;}
+  .concept .cap{margin:0 0 14px;}
+  .concept .cap h2{font-size:17px;margin:0 0 4px;}
+  .concept .cap .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .concept .cap p{font-size:13px;color:var(--muted);margin:0;line-height:1.5;}
+
+  /* Phone shell */
+  .phone{width:340px;height:720px;border-radius:44px;background:#000;
+    padding:12px;box-shadow:0 20px 60px rgba(0,0,0,.55),0 0 0 2px #26262b inset;
+    position:relative;overflow:hidden;}
+  .screen{width:100%;height:100%;border-radius:33px;overflow:hidden;position:relative;
+    background:var(--bg);display:flex;flex-direction:column;}
+  .statusbar{height:30px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 22px;font-size:12px;font-weight:600;color:var(--text);flex:none;}
+  .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:120px;height:26px;background:#000;border-radius:0 0 16px 16px;z-index:5;}
+  .body{flex:1;overflow:hidden;padding:8px 20px 22px;display:flex;flex-direction:column;}
+
+  /* Reusable bits */
+  .appname{font-size:22px;font-weight:700;letter-spacing:-.01em;}
+  .muted{color:var(--muted);}
+  .switch{width:46px;height:28px;border-radius:999px;background:#3A3A40;position:relative;flex:none;}
+  .switch.on{background:var(--accent);}
+  .switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;
+    background:#fff;transition:.2s;}
+  .switch.on::after{left:21px;}
+  .row{display:flex;align-items:center;justify-content:space-between;}
+  .slider{height:6px;border-radius:999px;position:relative;}
+  .knob{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:#fff;
+    transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.4);}
+  .card{background:var(--card);border-radius:20px;padding:16px 18px;}
+  .btn{border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:600;width:100%;
+    color:#fff;cursor:default;}
+  .chip{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;background:var(--card2);color:var(--text);}
+  .chip.on{background:var(--accent);color:#1a1200;}
+  .label{font-size:15px;}
+  .sub{font-size:12px;color:var(--muted);}
+  .hue{background:linear-gradient(90deg,#E23A2E,#FF5A00,#FF9500,#FFC24D);}
+  .dim{background:linear-gradient(90deg,#444,#FF7A1A);}
+</style>
+</head>
+<body>
+  <h1 class="page">Orange — four UI directions</h1>
+  <p class="lead">All four show the same features (filter on/off, Color Tint hue + intensity, Dim, Grayscale,
+  Bedtime, Schedule) so you can compare <em>layout and feel</em>, not content. All dark-themed — right for a
+  night app. Tell me which concept to build, or mix elements (e.g. "C's preview + B's cards").</p>
+
+  <div class="gallery">
+
+    <!-- ============ A — MINIMAL DIAL ============ -->
+    <div class="concept">
+      <div class="cap">
+        <span class="tag">Concept A</span>
+        <h2>The Dial</h2>
+        <p>One hero control. Tap the glowing disc to toggle; everything else is quiet and secondary. Most
+        minimal, most "gadget".</p>
+      </div>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="statusbar"><span>9:41</span><span>▮▮▮ 100%</span></div>
+        <div class="body">
+          <div class="row"><span class="appname">Orange</span><span class="muted">⚙︎</span></div>
+
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
+            <div style="width:206px;height:206px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+              background:radial-gradient(circle at 50% 42%, rgba(255,122,26,.55), rgba(226,58,46,.15) 60%, transparent 72%);
+              box-shadow:0 0 0 2px rgba(255,122,26,.35) inset, 0 0 60px rgba(255,90,0,.35);">
+              <div style="width:150px;height:150px;border-radius:50%;background:#141416;
+                display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+                box-shadow:0 0 0 1px #2c2c31 inset;">
+                <div style="font-size:30px;">⏻</div>
+                <div style="font-size:15px;font-weight:700;">ON</div>
+                <div class="sub">Deep red · 85%</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:18px;margin-top:4px;">
+            <div>
+              <div class="row" style="margin-bottom:9px;"><span class="sub">Hue</span><span class="sub">red</span></div>
+              <div class="slider hue"><div class="knob" style="left:8%;"></div></div>
+            </div>
+            <div>
+              <div class="row" style="margin-bottom:9px;"><span class="sub">Intensity</span><span class="sub">85%</span></div>
+              <div class="slider" style="background:#3A3A40;"><div class="knob" style="left:85%;background:var(--accent);"></div></div>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:space-between;">
+              <span class="chip on">Dim</span>
+              <span class="chip">Grayscale</span>
+              <span class="chip">21:00–07:00</span>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ============ B — iOS CARDS ============ -->
+    <div class="concept">
+      <div class="cap">
+        <span class="tag">Concept B</span>
+        <h2>Clean Cards</h2>
+        <p>iOS-Settings familiarity: grouped cards, generous spacing, every control labelled. Most legible and
+        discoverable; easiest to grow.</p>
+      </div>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="statusbar"><span>9:41</span><span>▮▮▮ 100%</span></div>
+        <div class="body" style="gap:14px;overflow:auto;">
+          <div class="appname" style="margin:4px 0 2px;">Orange</div>
+
+          <div style="display:flex;gap:8px;">
+            <span class="chip" style="flex:1;text-align:center;">Off</span>
+            <span class="chip" style="flex:1;text-align:center;">Warm</span>
+            <span class="chip on" style="flex:1;text-align:center;">Bedtime</span>
+          </div>
+
+          <div class="card row"><span class="label" style="font-weight:600;">Filter</span><span class="switch on"></span></div>
+
+          <div class="card" style="display:flex;flex-direction:column;gap:16px;">
+            <div class="sub" style="font-weight:600;letter-spacing:.03em;">COLOR TINT</div>
+            <div>
+              <div class="row" style="margin-bottom:10px;"><span class="label">Hue</span><span class="sub">0° red</span></div>
+              <div class="slider hue"><div class="knob" style="left:6%;"></div></div>
+            </div>
+            <div>
+              <div class="row" style="margin-bottom:10px;"><span class="label">Intensity</span><span class="sub">85%</span></div>
+              <div class="slider" style="background:#3A3A40;"><div class="knob" style="left:85%;background:var(--accent);"></div></div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;flex-direction:column;gap:16px;">
+            <div class="row"><span class="label">Extra dim</span><span class="switch on"></span></div>
+            <div class="slider dim"><div class="knob" style="left:85%;"></div></div>
+            <div style="height:1px;background:var(--line);"></div>
+            <div class="row"><span class="label">Grayscale</span><span class="switch"></span></div>
+          </div>
+
+          <div class="card row"><div><div class="label" style="font-weight:600;">Schedule</div><div class="sub">21:00 – 07:00</div></div><span class="switch on"></span></div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ============ C — PREVIEW FIRST ============ -->
+    <div class="concept">
+      <div class="cap">
+        <span class="tag">Concept C</span>
+        <h2>Live Preview</h2>
+        <p>Top half previews the actual tint over a mock clock/wallpaper so you see the effect while you tune.
+        Controls live in a bottom sheet.</p>
+      </div>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="statusbar"><span>9:41</span><span>▮▮▮ 100%</span></div>
+        <div class="body" style="padding:0;">
+          <!-- preview -->
+          <div style="position:relative;height:300px;flex:none;
+            background:linear-gradient(160deg,#2a2440,#20283a);overflow:hidden;">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#cfd3e0;">
+              <div style="font-size:14px;opacity:.7;">Mon 27 October</div>
+              <div style="font-size:66px;font-weight:300;letter-spacing:-.02em;">9:41</div>
+            </div>
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 45%, rgba(226,58,46,.78), rgba(180,20,10,.92));mix-blend-mode:multiply;"></div>
+            <div style="position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:11px;color:#fff;opacity:.8;">Preview · lock screen</div>
+          </div>
+          <!-- sheet -->
+          <div style="flex:1;background:var(--bg);border-radius:26px 26px 0 0;margin-top:-22px;
+            padding:16px 22px;display:flex;flex-direction:column;gap:18px;position:relative;">
+            <div style="width:40px;height:5px;border-radius:3px;background:#3a3a40;margin:0 auto;"></div>
+            <div class="row"><span class="appname" style="font-size:20px;">Orange</span><span class="switch on"></span></div>
+            <div>
+              <div class="row" style="margin-bottom:10px;"><span class="sub">Hue · red</span><span class="sub">Intensity · 90%</span></div>
+              <div class="slider hue" style="margin-bottom:16px;"><div class="knob" style="left:5%;"></div></div>
+              <div class="slider" style="background:#3A3A40;"><div class="knob" style="left:90%;background:var(--accent);"></div></div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <span class="chip on" style="flex:1;text-align:center;">Dim</span>
+              <span class="chip" style="flex:1;text-align:center;">Grayscale</span>
+            </div>
+            <button class="btn" style="background:linear-gradient(90deg,#E23A2E,#FF5A00);margin-top:auto;">🌙 Bedtime</button>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- ============ D — AMBIENT ============ -->
+    <div class="concept">
+      <div class="cap">
+        <span class="tag">Concept D</span>
+        <h2>Ambient</h2>
+        <p>The whole screen <em>is</em> the status — a wash in the current tint. Almost no chrome; big calm
+        type. Boldest, least conventional.</p>
+      </div>
+      <div class="phone"><div class="notch"></div><div class="screen" style="background:radial-gradient(circle at 50% 35%, #FF5A00, #B4140A 70%, #5c0a04);">
+        <div class="statusbar"><span>9:41</span><span>▮▮▮ 100%</span></div>
+        <div class="body" style="align-items:center;text-align:center;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+            <div style="width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.14);
+              display:flex;align-items:center;justify-content:center;font-size:34px;
+              box-shadow:0 0 0 1px rgba(255,255,255,.25) inset;">⏻</div>
+            <div style="font-size:40px;font-weight:300;letter-spacing:.02em;margin-top:6px;">Filter on</div>
+            <div style="font-size:15px;opacity:.85;">Deep red · 85% · Dim 85%</div>
+          </div>
+
+          <div style="width:100%;display:flex;flex-direction:column;gap:20px;padding-bottom:8px;">
+            <div class="slider" style="background:rgba(255,255,255,.22);"><div class="knob" style="left:8%;"></div></div>
+            <div class="slider" style="background:rgba(255,255,255,.22);"><div class="knob" style="left:85%;"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;opacity:.92;">
+              <span>Bedtime</span><span>Dim ●</span><span>Grayscale ○</span><span>21:00</span>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</body>
+</html>
